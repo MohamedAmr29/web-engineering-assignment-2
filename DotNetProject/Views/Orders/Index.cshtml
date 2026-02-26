@@ -1,0 +1,44 @@
+@model IEnumerable<DotNetProject.Models.Order>
+
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<div class="container">
+    <h1>Orders</h1>
+    
+    <a href="@Url.Action("Create", "Orders")" class="btn btn-primary mb-3">Add New Order</a>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Order Number</th>
+                <th>Customer Name</th>
+                <th>Total Amount</th>
+                <th>Status</th>
+                <th>Order Date</th>
+                <th>Delivery Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.OrderNumber</td>
+                    <td>@order.CustomerName</td>
+                    <td>$@order.TotalAmount</td>
+                    <td><span class="badge bg-@(order.Status == "Completed" ? "success" : order.Status == "Pending" ? "warning" : "info")">@order.Status</span></td>
+                    <td>@order.OrderDate.ToString("yyyy-MM-dd")</td>
+                    <td>@order.DeliveryDate.ToString("yyyy-MM-dd")</td>
+                    <td>
+                        <a href="@Url.Action("Edit", "Orders", new { id = order.Id })" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="@Url.Action("Delete", "Orders", new { id = order.Id })" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
