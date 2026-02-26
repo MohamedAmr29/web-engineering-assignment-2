@@ -1,0 +1,65 @@
+@model DotNetProject.Models.Order
+
+@{
+    ViewData["Title"] = "Create Order";
+}
+
+<div class="container">
+    <h1>Create Order</h1>
+    
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        
+        <div class="form-group">
+            <label asp-for="OrderNumber" class="control-label"></label>
+            <input asp-for="OrderNumber" class="form-control" />
+            <span asp-validation-for="OrderNumber" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="CustomerName" class="control-label"></label>
+            <input asp-for="CustomerName" class="form-control" />
+            <span asp-validation-for="CustomerName" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="TotalAmount" class="control-label"></label>
+            <input asp-for="TotalAmount" type="number" step="0.01" class="form-control" />
+            <span asp-validation-for="TotalAmount" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="Status" class="control-label"></label>
+            <select asp-for="Status" class="form-control">
+                <option value="">Select Status</option>
+                <option value="Pending">Pending</option>
+                <option value="Processing">Processing</option>
+                <option value="Completed">Completed</option>
+            </select>
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="OrderDate" class="control-label"></label>
+            <input asp-for="OrderDate" type="datetime-local" class="form-control" />
+            <span asp-validation-for="OrderDate" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="DeliveryDate" class="control-label"></label>
+            <input asp-for="DeliveryDate" type="datetime-local" class="form-control" />
+            <span asp-validation-for="DeliveryDate" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group mt-3">
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
