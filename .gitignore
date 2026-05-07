@@ -1,0 +1,28 @@
+# .gitignore for .NET and React project
+
+# .NET
+bin/
+obj/
+*.user
+*.userosscache
+*.sln.docstates
+coursemanagement.db*
+
+# Node.js
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+.env
+.env.local
+
+# IDEs
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+.DS_Store
